@@ -207,16 +207,7 @@ class Train
                 if (map->mapactiv[i][j])
                 {
                     map->Hod(i, j, 1);
-                    Tree *newtree = new Tree;
-                    newtree->x = i;
-                    newtree->y = j;
-                    newtree->win = 0;
-                    newtree->num = 1;
-                    newtree->numSun = 0;
-                    newtree->rod = Tr->tree;
-                    Tr->tree->Sun.push_back(newtree);
-                    Tr->tree->numSun++;
-                    Tr->tree = newtree;
+                    Tr->add(i, j);
                 }
     }
     void botchoseO(Map *map)
@@ -246,16 +237,7 @@ class Train
                 if (map->mapactiv[i][j])
                 {
                     map->Hod(i, j, 2);
-                    Tree *newtree = new Tree;
-                    newtree->x = i;
-                    newtree->y = j;
-                    newtree->win = 0;
-                    newtree->num = 1;
-                    newtree->numSun = 0;
-                    newtree->rod = Tr->tree;
-                    Tr->tree->Sun.push_back(newtree);
-                    Tr->tree->numSun++;
-                    Tr->tree = newtree;
+                    Tr->add(i, j);
                 }
     }
     bool botchoseO2(Map *map)
@@ -282,16 +264,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 2);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -311,16 +284,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 2);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -331,16 +295,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 2);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -351,16 +306,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 2);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -374,16 +320,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 2);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -402,16 +339,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 2);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -430,16 +358,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 2);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -450,16 +369,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 2);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -490,16 +400,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 1);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -519,16 +420,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 1);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -539,16 +431,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 1);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -559,16 +442,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 1);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -582,16 +456,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 1);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }
@@ -610,16 +475,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 1);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -638,16 +494,7 @@ class Train
                                                         if (!Tr->here(i, j))
                                                         {
                                                             map->Hod(i, j, 1);
-                                                            Tree *newtree = new Tree;
-                                                            newtree->x = i;
-                                                            newtree->y = j;
-                                                            newtree->win = 0;
-                                                            newtree->num = 1;
-                                                            newtree->numSun = 0;
-                                                            newtree->rod = Tr->tree;
-                                                            Tr->tree->Sun.push_back(newtree);
-                                                            Tr->tree->numSun++;
-                                                            Tr->tree = newtree;
+                                                            Tr->add(i, j);
                                                             return true;
                                                         }
                                                     }
@@ -658,16 +505,7 @@ class Train
                         if (!Tr->here(i, j))
                         {
                             map->Hod(i, j, 1);
-                            Tree *newtree = new Tree;
-                            newtree->x = i;
-                            newtree->y = j;
-                            newtree->win = 0;
-                            newtree->num = 1;
-                            newtree->numSun = 0;
-                            newtree->rod = Tr->tree;
-                            Tr->tree->Sun.push_back(newtree);
-                            Tr->tree->numSun++;
-                            Tr->tree = newtree;
+                            Tr->add(i, j);
                             return true;
                         }
                     }

@@ -83,6 +83,19 @@ class TreeBase
 				return true;
 		return false;
 	}
+	void add(int i, int j)
+	{
+		Tree *newtree = new Tree;
+		newtree->x = i;
+		newtree->y = j;
+		newtree->win = 0;
+		newtree->num = 1;
+		newtree->numSun = 0;
+		newtree->rod = tree;
+		tree->Sun.push_back(newtree);
+		tree->numSun++;
+		tree = newtree;
+	}
 	TreeBase()
 	{
 		ifstream f("Tree.txt");
@@ -106,6 +119,7 @@ class TreeBase
 	}
 	void saveall()
 	{
+		clearTree(tree);
 		while (tree->rod != nullptr)
 		{
 			tree = tree->rod;
@@ -217,27 +231,6 @@ class TreeBase
 			}
 			if (flag)
 				tree->win++;
-		}
-	}
-	void nullx(Tree *tree) //стираем Х память
-	{
-		forclear++;
-		if (!(forclear % 3))
-		{
-			if (!(forclear % 6))
-				flagclear = false;
-			else
-				flagclear = true;
-		}
-		if (flagclear)
-		{
-			tree->num = 1;
-			tree->win = 0;
-		}
-		for (int i = 0; i < tree->numSun; i++)
-		{
-			nullx(tree->Sun[i]);
-			forclear--;
 		}
 	}
 };
