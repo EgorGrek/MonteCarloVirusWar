@@ -47,34 +47,6 @@ public:
 			}
 		}
 	}
-	void writeBranch(ofstream &f, Tree *tree)
-	{
-		f << " " << tree->x << " ";
-		f << tree->y << " ";
-		f << tree->win << " ";
-		f << tree->num << " ";
-		f << tree->numSun;
-	}
-	void writeTree(ofstream &f, Tree *tree)
-	{
-		if (tree->numSun)
-		{
-			int i = 0;
-			while (i != tree->numSun)
-			{
-				writeBranch(f, tree->Sun[i]);
-				i++;
-			}
-			i = 0;
-			while (i != tree->numSun)
-			{
-				writeTree(f, tree->Sun[i]);
-				i++;
-			}
-			/*for (int j = 0; j < tree->numSun; j++)
-				delete tree->Sun[j];*/
-		}
-	}
 	bool here(int x, int y)
 	{
 		for (int i = 0; i < tree->numSun; i++)
@@ -100,29 +72,5 @@ public:
 		}
 
 		f.close();
-	}
-	void saveall()
-	{
-		while (tree->rod != nullptr)
-		{
-			tree = tree->rod;
-		}
-		if (tree != nullptr)
-		{
-			ofstream f("Tree.txt");
-
-			f << tree->x << " ";
-			f << tree->y << " ";
-			f << tree->win << " ";
-			f << tree->num << " ";
-			f << tree->numSun;
-			writeTree(f, tree);
-
-			f.close();
-		}
-	}
-	~TreeBase()
-	{
-		saveall();
 	}
 };
