@@ -23,6 +23,14 @@ class Map
             }
         }
     }
+    ~Map()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            delete[] map[i];
+            delete[] mapactiv[i];
+        }
+    }
     void Activation(int igrok)
     {
         for (int i = 0; i < 10; i++)
@@ -215,10 +223,18 @@ class Train
         int maxWinrate = 0;
         int numMaxSun = -1;
         for (int i = 0; i < Tr->tree->numSun; i++)
-            if (Tr->tree->Sun[i]->win / Tr->tree->Sun[i]->num > maxWinrate)
+            if (Tr->tree->Sun[i]->win / Tr->tree->Sun[i]->num >= maxWinrate)
             {
                 maxWinrate = Tr->tree->Sun[i]->win / Tr->tree->Sun[i]->num;
                 numMaxSun = i;
+            }
+        for (int i = 0; i < Tr->tree->numSun; i++)
+            if (i != numMaxSun)
+            {
+                for (int j = 0; j < Tr->tree->Sun[i]->numSun; j++)
+                    Tr->clearBranch(Tr->tree->Sun[i]->Sun[j]);
+                Tr->tree->Sun[i]->Sun.clear();
+                Tr->tree->Sun[i]->numSun = 0;
             }
         if (maxWinrate < 0.01)
         {
@@ -537,12 +553,16 @@ class Train
                 GOver = false;
                 hod = 0;
                 igrok = 1;
+                count++;
+                if (!(count % 10000))
+                {
+                    Tr->saveall();
+                }
                 delete map;
                 map = new Map;
                 map->Hod(0, 0, 1);
                 endhod();
                 cout << count << endl;
-                count++;
             }
             if (_kbhit())
             {

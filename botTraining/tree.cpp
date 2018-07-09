@@ -58,23 +58,11 @@ class TreeBase
 	}
 	void writeTree(ofstream &f, Tree *tree)
 	{
-		if (tree->numSun)
-		{
-			int i = 0;
-			while (i != tree->numSun)
-			{
-				writeBranch(f, tree->Sun[i]);
-				i++;
-			}
-			i = 0;
-			while (i != tree->numSun)
-			{
-				writeTree(f, tree->Sun[i]);
-				i++;
-			}
-			/* for (int j = 0; j < tree->numSun; j++)
-				delete tree->Sun[j]; */
-		}
+		for (int i = 0; i < tree->numSun; i++)
+			writeBranch(f, tree->Sun[i]);
+			
+		for (int i = 0; i < tree->numSun; i++)
+			writeTree(f, tree->Sun[i]);
 	}
 	bool here(int x, int y)
 	{
@@ -101,25 +89,19 @@ class TreeBase
 		ifstream f("Tree.txt");
 		tree = nullptr;
 
-		if (f)
-		{
-			tree = new Tree;
-			f >> tree->x;
-			f >> tree->y;
-			f >> tree->win;
-			f >> tree->num;
-			f >> tree->numSun;
-			tree->rod = nullptr;
-			readTree(f, tree);
-		}
-		forclear = 0;
-		flagclear = true;
-		/* nullx(tree); */
+		tree = new Tree;
+		f >> tree->x;
+		f >> tree->y;
+		f >> tree->win;
+		f >> tree->num;
+		f >> tree->numSun;
+		tree->rod = nullptr;
+		readTree(f, tree);
+
 		f.close();
 	}
 	void saveall()
 	{
-		clearTree(tree);
 		while (tree->rod != nullptr)
 		{
 			tree = tree->rod;
@@ -142,10 +124,6 @@ class TreeBase
 			tree = tree->rod;
 		}
 	}
-	~TreeBase()
-	{
-		saveall();
-	}
 	void clearBranch(Tree *tree)
 	{
 		if (tree->numSun)
@@ -156,47 +134,6 @@ class TreeBase
 		tree->Sun.erase(tree->Sun.begin(), tree->Sun.end());
 		delete tree;
 		return;
-	}
-	void clearTree(Tree *tree) // чистим тупые ходы O потому что ЕГО тренируем и ему неудачные ходы не нужны, он их никогда не выберет
-	{						   // а вот X мы неудачные ходы не убираем, потому что они могут быть в дальнейшем выбраны человеком во время игры с ним
-		forclear++;
-		if (!(forclear % 3))
-		{
-			if (!((forclear / 3) % 2))
-				flagclear = false;
-			else
-				flagclear = true;
-		}
-		if (flagclear)
-		{
-			int max = 0;
-			int index = -1;
-			for (int i = 0; i < tree->numSun; i++)
-				if (tree->Sun[i]->win / tree->Sun[i]->num >= max)
-				{
-					max = tree->Sun[i]->win / tree->Sun[i]->num;
-					index = i;
-				}
-			if (index != -1)
-			{
-				for (int j = 0; j < tree->numSun; j++)
-					if (j != index)
-					{
-						for (int i = 0; i < tree->Sun[j]->numSun; i++)
-							clearBranch(tree->Sun[j]->Sun[i]);
-						tree->Sun[j]->numSun = 0;
-						tree->Sun[j]->Sun.erase(tree->Sun.begin(), tree->Sun.end());
-					}
-				clearTree(tree->Sun[index]);
-			}
-			forclear--;
-		}
-		else
-			for (int i = 0; i < tree->numSun; i++)
-			{
-				clearTree(tree->Sun[i]);
-				forclear--;
-			}
 	}
 	void someWin(int hod, bool flag) // кто то выиграл и меняем кол-во побед
 	{
