@@ -9,7 +9,7 @@ struct Tree
 	unsigned short int y;
 	long double win;    // кол-во побед после прохождения по узлу
 	long double num;    // кол-во прохождения по узлу
-	unsigned long long int numSun; // кол-во дочерних узлов
+	int numSun; // кол-во дочерних узлов
 	vector<Tree*> Sun; // массив сыновей
 	Tree *rod; // ссылка на родителя 
 };
