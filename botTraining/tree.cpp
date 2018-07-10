@@ -4,13 +4,13 @@ using namespace std;
 
 struct Tree
 {
-	int x;
-	int y;
-	int win;			// кол-во побед после прохождения по узлу
-	int num;			// кол-во прохождения по узлу
-	int numSun;			// кол-во дочерних узлов
-	vector<Tree *> Sun; // массив сыновей
-	Tree *rod;			// ссылка на родителя
+	short int x;
+	short int y;
+	long double win;	 // кол-во побед после прохождения по узлу
+	long double num;	 // кол-во прохождения по узлу
+	unsigned int numSun; // кол-во дочерних узлов
+	vector<Tree *> Sun;  // массив сыновей
+	Tree *rod;			 // ссылка на родителя
 };
 
 class TreeBase
@@ -50,6 +50,8 @@ class TreeBase
 	}
 	void writeBranch(ofstream &f, Tree *tree)
 	{
+		if(tree->win < 5)
+			tree->win++;  // что бы несколько случайныx промахов не сломали выиграшную ветку
 		f << " " << tree->x << " ";
 		f << tree->y << " ";
 		f << tree->win << " ";
@@ -60,7 +62,7 @@ class TreeBase
 	{
 		for (int i = 0; i < tree->numSun; i++)
 			writeBranch(f, tree->Sun[i]);
-			
+
 		for (int i = 0; i < tree->numSun; i++)
 			writeTree(f, tree->Sun[i]);
 	}
@@ -109,7 +111,6 @@ class TreeBase
 		if (tree != nullptr)
 		{
 			ofstream f("Tree.txt");
-
 			f << tree->x << " ";
 			f << tree->y << " ";
 			f << tree->win << " ";

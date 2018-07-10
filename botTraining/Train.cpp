@@ -198,10 +198,17 @@ class Train
                 maxWinrate = Tr->tree->Sun[i]->win / Tr->tree->Sun[i]->num;
                 numMaxSun = i;
             }
-        if (maxWinrate <= 0)
+        if (maxWinrate <= 0.01)
         {
-            if (botchoseX2(map))
-                return;
+            if (botchoseX2(map)) // либо оставить это
+            /* for (int i = 0; i < 10; i++)                         // *
+                for (int j = 0; j < 10; j++)                        // *
+                    if (!Tr->here(i, j) && map->mapactiv[i][j]) */  // * либо это
+                    {
+                        /* map->Hod(i, j, 1);                       // *
+                        Tr->add(i, j); */                           // *
+                        return;
+                    }
         }
         if (numMaxSun != -1)
         {
@@ -228,18 +235,26 @@ class Train
                 maxWinrate = Tr->tree->Sun[i]->win / Tr->tree->Sun[i]->num;
                 numMaxSun = i;
             }
+
         for (int i = 0; i < Tr->tree->numSun; i++)
             if (i != numMaxSun)
             {
-                for (int j = 0; j < Tr->tree->Sun[i]->numSun; j++)
-                    Tr->clearBranch(Tr->tree->Sun[i]->Sun[j]);
-                Tr->tree->Sun[i]->Sun.clear();
+                for (int j = 0; j < Tr->tree->Sun[i]->numSun; j++) // для очистки 
+                    Tr->clearBranch(Tr->tree->Sun[i]->Sun[j]);     // веток которые никогда 
+                Tr->tree->Sun[i]->Sun.clear();                     // не выберет бот
                 Tr->tree->Sun[i]->numSun = 0;
             }
-        if (maxWinrate < 0.01)
+        if (maxWinrate <= 0.01)
         {
-            if (botchoseO2(map))
-                return;
+            if (botchoseO2(map)) // либо оставить это
+            /* for (int i = 0; i < 10; i++)                         // *
+                for (int j = 0; j < 10; j++)                        // *
+                    if (!Tr->here(i, j) && map->mapactiv[i][j]) */  // * либо это
+                    {                                                        
+                        /* map->Hod(i, j, 2);                       // *
+                        Tr->add(i, j); */                           // *
+                        return;
+                    }
         }
         if (numMaxSun != -1)
         {
@@ -554,10 +569,10 @@ class Train
                 hod = 0;
                 igrok = 1;
                 count++;
-                if (!(count % 10000))
+                /* if (!(count % 10000))
                 {
                     Tr->saveall();
-                }
+                } */
                 delete map;
                 map = new Map;
                 map->Hod(0, 0, 1);
