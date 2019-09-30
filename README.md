@@ -5,7 +5,7 @@ two bots training will start (they will play against each other)
 and then the program will generate a text file with the Monte Carlo tree.
 This file should be placed in the game folder.
 
-CLI is used for graphics.
+CLI is used for UI.
 To start the game, you should create a CLI project in Visual Studio 2017 (not tested on others)
 replace the automatically created file with the form to MyForm.h, add the other two
 file in the project, compile and run.
